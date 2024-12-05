@@ -4,14 +4,12 @@ import React from "react";
 const API_KEY = process.env.API_KEY;
 
 interface SearchParamsProps {
-  genre?: string;
+  searchParams: Promise<{ genre: string }>;
 }
 
 const Home = async ({
   searchParams,
-}: {
-  searchParams: SearchParamsProps;
-}): Promise<JSX.Element> => {
+}: SearchParamsProps): Promise<JSX.Element> => {
   const searchParamsAwaited = await searchParams;
   const genre = searchParamsAwaited.genre || "fetchTrending";
   const res = await fetch(
