@@ -2,9 +2,9 @@ import Results from "@/components/Results";
 import React from "react";
 
 interface SearchPageProps {
-  params: {
+  params: Promise<{
     searchTerm: string;
-  };
+  }>;
 }
 
 const SearchPage = async ({ params }: SearchPageProps) => {
