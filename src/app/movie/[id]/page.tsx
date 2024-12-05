@@ -3,7 +3,7 @@ import Image from "next/image";
 
 interface MoviePageProps {
   params: {
-    id: number;
+    id: Promise<number>;
   };
 }
 
