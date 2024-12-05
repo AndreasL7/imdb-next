@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -35,7 +36,9 @@ export default function RootLayout({
         <Providers>
           <Header />
           <Navbar />
-          <SearchBox />
+          <Suspense>
+            <SearchBox />
+          </Suspense>
           {children}
         </Providers>
       </body>
