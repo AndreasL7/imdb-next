@@ -1,5 +1,5 @@
 import Results from "@/components/Results";
-import React from "react";
+import React, { Suspense } from "react";
 
 const API_KEY = process.env.API_KEY;
 
@@ -7,7 +7,7 @@ interface SearchParamsProps {
   searchParams: Promise<{ genre: string }>;
 }
 
-const Home = async ({
+const HomePageContent = async ({
   searchParams,
 }: SearchParamsProps): Promise<JSX.Element> => {
   const searchParamsAwaited = await searchParams;
@@ -29,6 +29,14 @@ const Home = async ({
     <div>
       <Results results={results} />
     </div>
+  );
+};
+
+const Home = ({ searchParams }: SearchParamsProps) => {
+  return (
+    <Suspense>
+      <HomePageContent searchParams={searchParams} />
+    </Suspense>
   );
 };
 

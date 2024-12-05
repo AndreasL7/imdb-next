@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Image from "next/image";
 
 interface MoviePageProps {
@@ -7,7 +7,7 @@ interface MoviePageProps {
   }>;
 }
 
-const MoviePage = async ({ params }: MoviePageProps) => {
+const MoviePageContent = async ({ params }: MoviePageProps) => {
   const paramsAwaited = await params;
   const movieId = await paramsAwaited.id;
   const res = await fetch(
@@ -45,6 +45,14 @@ const MoviePage = async ({ params }: MoviePageProps) => {
         </div>
       </div>
     </div>
+  );
+};
+
+const MoviePage = ({ params }: MoviePageProps) => {
+  return (
+    <Suspense>
+      <MoviePageContent params={params} />
+    </Suspense>
   );
 };
 
