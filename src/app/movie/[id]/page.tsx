@@ -2,9 +2,9 @@ import React from "react";
 import Image from "next/image";
 
 interface MoviePageProps {
-  params: {
-    id: Promise<number>;
-  };
+  params: Promise<{
+    id: number;
+  }>;
 }
 
 const MoviePage = async ({ params }: MoviePageProps) => {
